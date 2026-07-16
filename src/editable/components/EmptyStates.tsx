@@ -18,16 +18,19 @@ export function EmptyState({
   className,
 }: EmptyStateProps) {
   return (
-    <section className={cn('rounded-[2rem] border border-current/10 bg-current/[0.03] p-8 text-center', className)}>
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-current/10">
+    <section className={cn('editable-striped-panel rounded-[2rem] p-3', className)}>
+      <div className="rounded-[1.55rem] border border-[#e9d9cc] bg-[#fffaf4] px-6 py-12 text-center sm:px-10">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#fce1d4] text-[#d94f26]">
         <SearchX className="h-6 w-6" />
       </div>
-      <h2 className="mt-5 text-2xl font-semibold tracking-[-0.03em]">{title}</h2>
-      <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-current/65">{description}</p>
-      <Link href={actionHref} className="mt-6 inline-flex items-center gap-2 rounded-full border border-current/15 px-5 py-3 text-sm font-semibold transition hover:bg-current hover:text-background">
+      <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-[#d94f26]">A quiet corner</p>
+      <h2 className="editable-display mt-3 text-4xl leading-none tracking-[-0.03em] text-[#241912]">{title}</h2>
+      <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#6f6259]">{description}</p>
+      <Link href={actionHref} className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#241912] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#d94f26]">
         {actionLabel}
         <ArrowRight className="h-4 w-4" />
       </Link>
+      </div>
     </section>
   )
 }
@@ -37,7 +40,7 @@ export function TaskEmptyState({ taskLabel = 'posts', className }: { taskLabel?:
     <EmptyState
       className={className}
       title={`No ${taskLabel} available yet`}
-      description={`Published ${taskLabel} from the master panel will appear here automatically. The page layout stays ready even when the feed is empty.`}
+      description={`New ${taskLabel} will appear here as soon as they are published. Check back soon for fresh ideas and useful discoveries.`}
       actionLabel="Explore the site"
       actionHref="/"
     />
