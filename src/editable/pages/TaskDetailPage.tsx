@@ -533,7 +533,7 @@ function ImageDetail({ post, related }: { post: SitePost; related: SitePost[] })
   const images = getImages(post)
   const gallery = images.length ? images : [getEditablePostImage(post)]
   const category = getEditableCategory(post)
-  const lead = leadText(post)
+  const lead = toPlainText(summaryText(post))
   const website = getField(post, ['website', 'url', 'link'])
 
   return (
