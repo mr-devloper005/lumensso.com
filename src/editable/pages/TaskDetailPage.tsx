@@ -533,7 +533,7 @@ function ImageDetail({ post, related }: { post: SitePost; related: SitePost[] })
   const images = getImages(post)
   const gallery = images.length ? images : [getEditablePostImage(post)]
   const category = getEditableCategory(post)
-  const lead = toPlainText(summaryText(post))
+  const lead = summaryText(post)
   const website = getField(post, ['website', 'url', 'link'])
 
   return (
@@ -546,7 +546,10 @@ function ImageDetail({ post, related }: { post: SitePost; related: SitePost[] })
             {post.title}
           </h1>
           {lead ? (
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--tk-muted)]">{lead}</p>
+            <div
+              className="mt-4 max-w-2xl text-base leading-7 text-[var(--tk-muted)] [&_a]:text-[var(--tk-accent)] [&_a]:underline"
+              dangerouslySetInnerHTML={{ __html: formatPlainText(lead) }}
+            />
           ) : null}
           <div className="mt-5 flex flex-wrap items-center gap-3">
             {category ? (
